@@ -25,13 +25,40 @@ public class LocationRegistry {
 		Location location = locationDict.get(locationId);
 		
 		if (locationSensorPairs.containsKey(location)){
-			System.out.println("Location already covered.");
+			System.out.println("Location already covered. ");
 			return null;
 		}
 		
 		else {
 			return location;
 		}		
+	}
+	
+	public Location getLocationForReadTemperature(int locationId){
+		if (!locationDict.containsKey(locationId)) {
+			System.out.println("Location not covered. ");
+			return null;
+		}
+		
+		Location location = locationDict.get(locationId);
+		
+		if (!locationSensorPairs.containsKey(location)){
+			System.out.println("Location has no sensor. ");
+			return null; 
+		}
+		else {
+			return location;
+		}		
+	}
+
+	
+	public Sensor getSensorFromLocation(Location location) {
+		return locationSensorPairs.get(location);
+	}
+	
+	
+	public void create(Sensor sensor, Location location) {
+		locationSensorPairs.put(location, sensor);
 	}
 	
 	
