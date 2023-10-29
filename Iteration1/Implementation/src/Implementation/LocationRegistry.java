@@ -36,14 +36,14 @@ public class LocationRegistry {
 	
 	public Location getLocationForReadTemperature(int locationId){
 		if (!locationDict.containsKey(locationId)) {
-			System.out.println("Location not covered. ");
+			System.out.println("Location not covered.");
 			return null;
 		}
 		
 		Location location = locationDict.get(locationId);
 		
 		if (!locationSensorPairs.containsKey(location)){
-			System.out.println("Location has no sensor. ");
+			System.out.println("Location has no sensor.");
 			return null; 
 		}
 		else {
