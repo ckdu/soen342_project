@@ -35,13 +35,7 @@ public class SensorRegistry {
 		return sensor;
 	}
 	
-	public Temperature getTemperatureFromSensor(Sensor sensor) {
-		return sensorTemperaturePairs.get(sensor);
-	}
-		
-	public void create(Sensor sensor, Location location) {
-		sensorLocationPairs.put(sensor, location);
-	}
+	
 
 
 
