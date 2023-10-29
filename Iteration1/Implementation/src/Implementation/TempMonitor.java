@@ -10,8 +10,10 @@ public class TempMonitor {
 	}
 	
 	public Temperature readTemperature(int locationId) {
+        // Get the location from the registry
 		Location location = locationRegistry.getLocationForReadTemperature(locationId);
 
+        // Get the sensor from the location
 		Sensor sensor = locationRegistry.getSensorFromLocation(location);
 		
 		Temperature temperature = sensorRegistry.getTemperatureFromSensor(sensor);
