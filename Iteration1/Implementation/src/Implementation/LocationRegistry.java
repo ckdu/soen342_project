@@ -1,0 +1,41 @@
+package Implementation;
+
+import java.util.HashMap;
+import java.util.List;
+
+public class LocationRegistry {
+	private List<Location> locations;
+	
+	//	ID ---> Location HashMap
+	HashMap<Integer, Location> locationDict = new HashMap<Integer, Location>();
+	
+	// Location ---> Sensor HashMap
+	HashMap<Location, Sensor> locationSensorPairs = new HashMap<Location, Sensor>();
+
+	
+	public void addLocation(Location location) {
+	}
+	
+	public Location getLocationForDeploySensor(int locationId){
+		if (!locationDict.containsKey(locationId)) {
+			System.out.println("Location not covered.");
+			return null;
+		}
+		
+		Location location = locationDict.get(locationId);
+		
+		if (locationSensorPairs.containsKey(location)){
+			System.out.println("Location already covered.");
+			return null;
+		}
+		
+		else {
+			return location;
+		}		
+	}
+	
+	
+	
+	
+	
+}
