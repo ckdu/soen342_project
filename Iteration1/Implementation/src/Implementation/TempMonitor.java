@@ -22,13 +22,17 @@ public class TempMonitor {
 	}
 
     public void deploySensor(int sensorId, int locationId) {
+        // Get the sensor from the registry
 		Sensor sensor = sensorRegistry.getSensor(sensorId);
 		
+        // Get the location from the registry
 		Location location = locationRegistry.getLocationForDeploySensor(locationId);
 
+        //	Deploy the sensor
 		if (sensor == null || location == null) {
 		} 
 		else {
+            // Add the sensor and the location to their respective hashMaps
 			sensorRegistry.create(sensor, location);
 			locationRegistry.create(sensor, location);
 			
