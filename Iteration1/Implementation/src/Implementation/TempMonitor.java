@@ -8,4 +8,14 @@ public class TempMonitor {
 		this.sensorRegistry = sensorRegistry;
 		this.locationRegistry = locationRegistry;
 	}
+	
+	public Temperature readTemperature(int locationId) {
+		Location location = locationRegistry.getLocationForReadTemperature(locationId);
+
+		Sensor sensor = locationRegistry.getSensorFromLocation(location);
+		
+		Temperature temperature = sensorRegistry.getTemperatureFromSensor(sensor);
+		System.out.println(temperature.unit + " " + temperature.value);
+		return temperature;
+	}
 }
