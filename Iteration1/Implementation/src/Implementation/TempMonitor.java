@@ -20,4 +20,20 @@ public class TempMonitor {
 		System.out.println(temperature.unit + " " + temperature.value);
 		return temperature;
 	}
+
+    public void deploySensor(int sensorId, int locationId) {
+		Sensor sensor = sensorRegistry.getSensor(sensorId);
+		
+		Location location = locationRegistry.getLocationForDeploySensor(locationId);
+
+		if (sensor == null || location == null) {
+		} 
+		else {
+			sensorRegistry.create(sensor, location);
+			locationRegistry.create(sensor, location);
+			
+			sensor.setIsDeployed(true);
+			System.out.println("Sensor has been deployed.");
+		}
+	}
 }
