@@ -25,7 +25,7 @@ public class LocationRegistry {
 		Location location = locationDict.get(locationId);
 		
 		if (locationSensorPairs.containsKey(location)){
-			System.out.println("Location already covered.");
+			System.out.println("Location already covered. ");
 			return null;
 		}
 		
