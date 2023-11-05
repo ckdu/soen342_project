@@ -128,6 +128,22 @@ map' = (map \setminus \{ oldSensor? \mapsto location? \}) \cup \{ newSensor? \ma
 read' = (read \setminus \{ oldSensor? \mapsto temperature? \}) \cup \{ newSensor? \mapsto temperature? \}
 \end{schema}
 
+\begin{schema}{GetAllLocationsAndTemperaturesOK}
+\Xi TempMonitor\\
+locationsAndTemperatures! : LOCATION\_TYPE \nrightarrow TEMPERATURE\_TYPE
+\where
+locationsAndTemperatures! = \{ l : \ran map @ l \mapsto read(map^{-1}(l)) \}
+\end{schema}
+
+\begin{schema}{SensorNotFound}
+\Xi TempMonitor\\
+sensor? : SENSOR\_TYPE\\
+response! : MESSAGE
+\where
+sensor? \notin deployed\\
+response!~=~'Sensor~not~found'
+\end{schema}
+
 
 
 \subsection{Operations}
@@ -144,6 +160,9 @@ read' = (read \setminus \{ oldSensor? \mapsto temperature? \}) \cup \{ newSensor
 \[ ReplaceSensor~\hat{=}~\\
 ~~~(ReplaceSensorOK \wedge Success)~ \oplus\\
 ~~~(SensorNotFound \vee SensorAlreadyDeployed) \]
+
+\[ GetAllLocationsAndTemperatures~\hat{=}~\\
+~~~GetAllLocationsAndTemperaturesOK \]
 
 \end{spacing}
 \end{document}
