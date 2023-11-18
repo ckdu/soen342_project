@@ -68,6 +68,7 @@ public class Driver {
 		senreg.sensorTemperaturePairs.put(s2, t2);
 		senreg.sensorTemperaturePairs.put(s3, t3);
 		
+				
 
 		//	Create TempMonitor
 		TempMonitor tm = new TempMonitor(senreg, locreg);
