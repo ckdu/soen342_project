@@ -21,6 +21,11 @@ public class SensorRegistry {
 	public void addSensor(Sensor sensor) {
 	}
 	
+	
+	public Temperature getTemperatureFromSensor(Sensor sensor) {
+		return sensorTemperaturePairs.get(sensor);
+	}
+	
 	public Sensor getSensor(int sensorId){
 		if (!sensorDict.containsKey(sensorId)) {
 			System.out.println("Invalid sensor ID");
@@ -36,7 +41,9 @@ public class SensorRegistry {
 	}
 	
 	
-
+	public void create(Sensor sensor, Location location) {
+		sensorLocationPairs.put(sensor, location);
+	}
 
 
 }
