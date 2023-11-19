@@ -11,6 +11,8 @@ public class Sensor {
 	}
 	
 	public void deploy() {};
+	
+	public int getSensorId() {return this.sensorId;}
 		
 	public Boolean getIsDeployed() {
 		return this.isDeployed;
