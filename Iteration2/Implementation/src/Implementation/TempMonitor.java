@@ -107,10 +107,8 @@ public class TempMonitor {
     	
     }
     
-    
-    
-    
-
-    
-    
 }
+    
+    
+    
+    
