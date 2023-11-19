@@ -40,4 +40,53 @@ public class TempMonitor {
 			System.out.println("Sensor has been deployed.");
 		}
 	}
+	public void replaceSensor(int sensorId, int locationId) {
+    	
+        // Get the sensor from the registry
+		Sensor newSensor = sensorRegistry.getSensor(sensorId);
+		
+        // Get the location from the registry
+		Location location = locationRegistry.getLocationForReadTemperature(locationId);
+
+        //	check that the new sensor and location are valid
+		if (newSensor == null)  {
+			System.out.println("Error: New sensor doesn't exist");
+			return;
+		} 
+		
+		if (location == null)  {
+			System.out.println("Error: Location doesn't exist");
+			return;
+		} 
+
+		// Check that the sensor is not already deployed
+		if (newSensor.getIsDeployed()) {
+			System.out.println("Error: Sensor to deploy is already delpoyed.");
+			return;
+		}
+		
+		// Grab old sensor from location
+		Sensor oldSensor = locationRegistry.getSensorFromLocation(location);
+		// Save the old sensor's temperature
+		Temperature temp = sensorRegistry.getTemperatureFromSensor(oldSensor);
+	
+		// Replace the old sensor by the new sensor in locationRegistry
+		if (locationRegistry.ReplaceSensorInLocation(location, newSensor) == null) {
+			System.out.println("Error: No sensor in location");
+			return;
+		}
+		
+		// Remove old sensor from HashMaps
+		sensorRegistry.remove(oldSensor);
+				
+		// Add new sensor to SensorDict
+		sensorRegistry.sensorDict.put(Collections.max(sensorRegistry.sensorDict.keySet()) + 1,  newSensor);
+		
+		// Add new sensor to SensorRegistry
+		sensorRegistry.createSensorLocationPair(newSensor, location);
+		sensorRegistry.createSensorTemperaturePair(newSensor, temp);
+		
+		newSensor.setIsDeployed(true);
+		System.out.println("Sensor " + newSensor.toString() + " has been deployed to location " + location.toString() + ".");
+	}
 }
