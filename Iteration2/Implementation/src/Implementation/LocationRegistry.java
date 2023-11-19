@@ -16,6 +16,11 @@ public class LocationRegistry {
 	public void addLocation(Location location) {
 	}
 	
+	
+	public Sensor ReplaceSensorInLocation(Location location, Sensor newSensor) {
+		return locationSensorPairs.replace(location, newSensor);
+	}
+	
 	public Location getLocationForDeploySensor(int locationId){
 		if (!locationDict.containsKey(locationId)) {
 			System.out.println("Location not covered.");
@@ -50,7 +55,6 @@ public class LocationRegistry {
 			return location;
 		}		
 	}
-
 	
 	public Sensor getSensorFromLocation(Location location) {
 		return locationSensorPairs.get(location);
