@@ -9,4 +9,8 @@ public class Temperature {
 		this.value = value;
 	}
 	
+	public String toString() {
+		return this.unit + " " + this.value;
+	}
+	
 }

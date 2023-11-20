@@ -23,7 +23,6 @@ public class Driver {
 		Location l5 = new Location(5);
 		Location l6 = new Location(6);
 
-		
 		//	Create new temperatures
 		Temperature t1 = new Temperature("Celcius", 1);
 		Temperature t2 = new Temperature("Celcius", 2);
@@ -36,7 +35,7 @@ public class Driver {
 		locreg.locationDict.put(1, l1);
 		locreg.locationDict.put(2, l2);
 		locreg.locationDict.put(3, l3);
-		locreg.locationDict.put(4, l4);
+//		locreg.locationDict.put(4, l4);
 
 		
 		locreg.locationSensorPairs = new HashMap<Location, Sensor>();
@@ -54,27 +53,29 @@ public class Driver {
 		senreg.sensorDict.put(3, s3);
 		senreg.sensorDict.put(4, s4);
 
-		
 		senreg.sensorLocationPairs = new HashMap<Sensor, Location>();
 		
 		senreg.sensorLocationPairs.put(s1, l1);
 		senreg.sensorLocationPairs.put(s2, l2);
 		senreg.sensorLocationPairs.put(s3, l3);
 		
-		
 		senreg.sensorTemperaturePairs = new HashMap<Sensor, Temperature>();
 		
 		senreg.sensorTemperaturePairs.put(s1, t1);
 		senreg.sensorTemperaturePairs.put(s2, t2);
 		senreg.sensorTemperaturePairs.put(s3, t3);
-		
 				
-
-		//	Create TempMonitor
+		// Create TempMonitor
 		TempMonitor tm = new TempMonitor(senreg, locreg);
 		
-		tm.readTemperature(1);
-		tm.deploySensor(4, 4);
+		tm.GetAllLocationsAndTemperatures();
+		tm.replaceSensor(4, 1);
+		
+		
+		
+		
+//		tm.readTemperature(1);
+//		tm.deploySensor(4, 4);
 		
 		
 		
