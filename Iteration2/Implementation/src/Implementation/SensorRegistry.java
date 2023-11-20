@@ -21,10 +21,20 @@ public class SensorRegistry {
 	public void addSensor(Sensor sensor) {
 	}
 	
+	public void remove(Sensor sensor) {
+		sensorLocationPairs.remove(sensor);
+		sensorTemperaturePairs.remove(sensor);
+		sensorDict.remove(sensor.getSensorId());
+	}
 	
 	public Temperature getTemperatureFromSensor(Sensor sensor) {
 		return sensorTemperaturePairs.get(sensor);
 	}
+	
+	public Location getLocationFromSensor(Sensor sensor) {
+		return sensorLocationPairs.get(sensor);
+	}
+
 	
 	public Sensor getSensor(int sensorId){
 		if (!sensorDict.containsKey(sensorId)) {
@@ -40,10 +50,15 @@ public class SensorRegistry {
 		return sensor;
 	}
 	
-	
-	public void create(Sensor sensor, Location location) {
+	public void createSensorLocationPair(Sensor sensor, Location location) {
 		sensorLocationPairs.put(sensor, location);
 	}
+	
+	public void createSensorTemperaturePair(Sensor sensor, Temperature temperature) {
+		sensorTemperaturePairs.put(sensor, temperature);
+	}
+
+	
 
 
 }
